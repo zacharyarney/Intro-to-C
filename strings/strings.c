@@ -7,9 +7,14 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
-int string_length(char *s)
+int string_length(char *s) 
 {
-
+    int i = 0;
+    while (*s) {
+        s = s + 1;
+        i++;
+    }
+    return i;
 }
 
 /*
@@ -18,13 +23,26 @@ int string_length(char *s)
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
-char *reverse_string(char *rv, char *s)
+char *reverse_string(char *rv, char *s) 
 {
-
+    // find length of string
+    int len = string_length(s);
+    // initialize pointer at end of string but before the null terminator
+    char *p = s + (len - 1);
+    // iterate through rv
+    for (int i = 0; i < len; i++) {
+        // sets value at rv[i] to current value of *p
+        *(rv + i) = *p;
+        // decrement position of p in string s
+        p--;
+    }
+    // terminate reverse string!
+    *(rv + len) = 0;
+    return rv;
 }
 
 #ifndef TESTING
-int main(void)
+int main(void) 
 {
     char quote1[] = "Don't forget to be awesome";
     char quote2[] = "a man a plan a canal panama";
