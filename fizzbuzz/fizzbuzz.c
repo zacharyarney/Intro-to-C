@@ -10,8 +10,7 @@
 */
 int fizzbuzz(int n) {
     int count = 0;
-    int i;
-    for (i = 0; i <= n; i++) {
+    for (int i = 0; i <= n; i++) {
         if (i % 3 == 0) {
             printf("Fizz\n");
         }
