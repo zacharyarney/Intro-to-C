@@ -39,7 +39,7 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-    while (*str != 0) {
+    while (*str != '\0') {
         if (*str == c) {
             return str;
         }
@@ -64,14 +64,25 @@ char *find_char(char *str, int c)
 // only major difference here is the inner loop
 char *find_string(char *haystack, char *needle)
 {
-
+    while (*haystack != '\0') {
+        if (*haystack == *needle) {
+            for (int i = 1; needle[i] != '\0'; i++) {
+                if (haystack[i] != needle[i]) {
+                    break;
+                }
+            }
+            return haystack;
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char *hello = "hello"
-    char *world= "world"
+    char *hello = "hello";
+    char *world= "world";
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
