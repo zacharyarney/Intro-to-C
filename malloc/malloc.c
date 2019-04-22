@@ -12,7 +12,14 @@
 */
 char *string_dup(char *src)
 {
-
+    char *sdup = malloc(strlen(src));
+    int i = 0;
+    while (src[i] != '\0') {
+        sdup[i] = src[i];
+        i++;
+    }
+    sdup[i] = '\0';
+    return sdup;
 }
 
 /*
@@ -24,7 +31,13 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    // casting input type to char pointers as per instructions
+    // not sure if this will cause problems with certain input types
+    char *dest_cast = (char *)dest;
+    char *src_cast = (char *)src;
+    for (int i = 0; i < n; i++) {
+        dest_cast[i] = src_cast[i];
+    }
 }
 
 /*
